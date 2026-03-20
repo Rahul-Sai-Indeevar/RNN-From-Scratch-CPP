@@ -31,6 +31,20 @@ Training RNNs on infinite or extremely long sequences requires **Truncated Backp
 * **The Advantage (Algorithmic Purity):** Because the boundary is constantly shifting every epoch, the network is forced to learn **true temporal invariance**. It eliminates the boundary blind spots and acts as a powerful sequence regularizer.
 * **Usage in this Project:** Because this engine runs on the CPU and processes sequences sequentially, we utilize Randomized TBPTT to achieve superior generalization and lower loss without the constraints of GPU batching.
 
+## 📈 Results
+The models were trained and tested on a synthetic sequence prediction task (predicting the next step of a noisy sine wave over 10,000 steps). 
+
+As expected, the **Bi-Directional RNN** significantly outperformed the standard architectures by leveraging both past and future context simultaneously.
+
+| Architecture | Final Avg Chunk Loss |
+| :--- | :--- |
+| Vanilla RNN (Regular Truncation) | `0.0091` |
+| Vanilla RNN (Randomized Truncation) | `0.0551` |
+| LSTM (Long Short-Term Memory) | `0.0381` |
+| GRU (Gated Recurrent Unit) | `0.0219` |
+| Deep Stacked RNN (2 Layers) | `0.0173` |
+| **Bi-Directional RNN** | **`0.0077`** |
+
 ## 🚀 How to Compile and Run
 Ensure you have a modern C++ compiler (GCC/Clang) installed.
 ```bash
