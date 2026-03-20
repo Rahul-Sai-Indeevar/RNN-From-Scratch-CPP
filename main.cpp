@@ -67,7 +67,6 @@ void train_sequence(const std::string &method_name, VanillaRNN &rnn,const std::v
     }
 }
 
-// Note the bug fix in the print logic: `t >= next_print` instead of `t % 2000 == 0`
 void train_lstm_sequence(const std::string &method_name,LSTM &lstm,const std::vector<Matrix> &X_data,const std::vector<Matrix> &Y_data,bool use_random_truncation){
     std::cout << "\n--- Starting Training: " << method_name << " ---\n";
 
