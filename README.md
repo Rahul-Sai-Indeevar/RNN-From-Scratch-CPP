@@ -45,8 +45,11 @@ As expected, the **Bi-Directional RNN** significantly outperformed the standard 
 | Deep Stacked RNN (2 Layers) | `0.0173` |
 | **Bi-Directional RNN** | **`0.0077`** |
 
+<img width="613" height="831" alt="Screenshot 2026-03-20 153058" src="https://github.com/user-attachments/assets/dc8dccf7-4ee0-4b35-a76f-ae726505da72" />
+
 ## 🚀 How to Compile and Run
 Ensure you have a modern C++ compiler (GCC/Clang) installed.
+Compile the code with O3 optimization (Heavy Matrix math)
 ```bash
     g++ -O3 main.cpp -o rnn_test
     ./rnn_test
