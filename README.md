@@ -4,21 +4,21 @@ A purely from-scratch implementation of sequence modeling architectures using st
 
 This project demonstrates the fundamental mathematics, forward/backward propagation calculus, and state management required to build and train Recurrent Neural Networks.
 
-## 🧠 Architectures Implemented
+## Architectures Implemented
 1. **Vanilla RNN:** The foundational sequence model.
 2. **LSTM (Long Short-Term Memory):** Implements Forget, Input, and Output gates with a persistent Cell State to solve the vanishing gradient problem.
 3. **GRU (Gated Recurrent Unit):** A streamlined architecture using Update and Reset gates for faster computation.
 4. **Deep (Stacked) RNNs:** A modular layer-based approach (`RNNLayer`, `DenseLayer`) allowing for $N$-layer deep sequence networks.
 5. **Bi-Directional RNNs:** Processes sequences left-to-right and right-to-left simultaneously, concatenating hidden states to provide full temporal context to the output layer.
 
-## ⚙️ The Core Engine (`Matrix.h`)
+## The Core Engine (`Matrix.h`)
 To support Backpropagation Through Time (BPTT), a custom linear algebra engine was built from scratch supporting:
 * Standard Matrix Multiplication (Dot products)
 * Hadamard (Element-wise) Products
 * Activation Functions & Derivatives (`Tanh`, `Sigmoid`)
 * **L2-Norm Gradient Clipping:** Crucial for preventing the exploding gradient problem inherent in RNNs.
 
-## ⏱️ Truncated BPTT: Regular vs. Randomized
+## Truncated BPTT: Regular vs. Randomized
 Training RNNs on infinite or extremely long sequences requires **Truncated Backpropagation Through Time (TBPTT)** to prevent memory exhaustion and gradient instability. This project implements and compares two truncation strategies:
 
 ### 1. Regular Truncation (Fixed Chunk Size)
@@ -31,7 +31,7 @@ Training RNNs on infinite or extremely long sequences requires **Truncated Backp
 * **The Advantage (Algorithmic Purity):** Because the boundary is constantly shifting every epoch, the network is forced to learn **true temporal invariance**. It eliminates the boundary blind spots and acts as a powerful sequence regularizer.
 * **Usage in this Project:** Because this engine runs on the CPU and processes sequences sequentially, we utilize Randomized TBPTT to achieve superior generalization and lower loss without the constraints of GPU batching.
 
-## 📈 Results
+## Results
 The models were trained and tested on a synthetic sequence prediction task (predicting the next step of a noisy sine wave over 10,000 steps). 
 
 As expected, the **Bi-Directional RNN** significantly outperformed the standard architectures by leveraging both past and future context simultaneously.
@@ -47,7 +47,7 @@ As expected, the **Bi-Directional RNN** significantly outperformed the standard 
 
 <img width="613" height="831" alt="Screenshot 2026-03-20 153058" src="https://github.com/user-attachments/assets/dc8dccf7-4ee0-4b35-a76f-ae726505da72" />
 
-## 🚀 How to Compile and Run
+## How to Compile and Run
 Ensure you have a modern C++ compiler (GCC/Clang) installed.
 Compile the code with O3 optimization (Heavy Matrix math)
 ```bash
